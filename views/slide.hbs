@@ -1,0 +1,36 @@
+{{!< layout}}
+
+<div data-parameters-object="{{{parameters_object}}}" data-parameters-string="{{{parameters_string}}}" data-parameters-object2="{{parameters_object}}" data-parameters-string2="{{parameters_string}}">
+    {{#if body}}
+        {{{body}}}
+        {{parameters_object}}
+        {{{parameters_object}}}
+        {{parameters_string}}
+        {{{parameters_string}}}
+        <div data-parameters-object-test2="{{{parameters_object}}}" data-parameters-string-test2="{{{parameters_string}}}" data-parameters-object2-test2="{{parameters_object}}" data-parameters-string2-test2="{{parameters_string}}">
+        {{{parameters_string}}}
+        </div>
+        <span data-parameters-object-test4="{{{parameters_object}}}" data-parameters-string-test4="{{{parameters_string}}}" data-parameters-object2-test4="{{parameters_object}}" data-parameters-string2-test4="{{parameters_string}}">
+        {{{parameters_string}}}
+        </span>
+    {{else}}
+        Here is a preview of your macro!
+    {{/if}}
+</div>
+
+<input type="hidden" id="slideParams" name="slideParams" value="{{{parameters_object}}}">
+<input type="hidden" id="slideParams2" name="slideParams2" value="{{parameters_object}}">
+<input type="hidden" id="slideParams3" name="slideParams3" value="{{{parameters_string}}}">
+<input type="hidden" id="slideParams4" name="slideParams4" value="{{parameters_string}}">
+
+<div data-parameters-object-test1="{{{parameters_object}}}" data-parameters-string-test1="{{{parameters_string}}}" data-parameters-object2-test1="{{parameters_object}}" data-parameters-string2-test1="{{parameters_string}}">
+{{{parameters_string}}}
+</div>
+
+<span data-parameters-object-test3="{{{parameters_object}}}" data-parameters-string-test3="{{{parameters_string}}}" data-parameters-object2-test3="{{parameters_object}}" data-parameters-string2-test3="{{parameters_string}}">
+{{{parameters_string}}}
+</span>
+
+<script type="text/javascript">
+    const parameters = "{{{parameters_string}}}";
+</script>
