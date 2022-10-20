@@ -1,7 +1,7 @@
 {
     "key": "slide",
     "name": "Slide",
-    "description": "Enter any rich text in the body of this macro so it will be rendered as a new slide.",
+    "description": "Slide Macro",
     "vendor": {
         "name": "Sanofi IADC",
         "url": "https://github.com/Sanofi-IADC"
@@ -22,13 +22,81 @@
     "modules": {
         "staticContentMacros": [
             {
+                "url": "/slide?macroId={macro.id}&pageId={page.id}&pageVersion={page.version}",
+                "description": {
+                    "value": "The text included in the body of this macro will not be rendered in the Confluence page or in konviw."
+                },
+                "bodyType": "rich-text",
+                "name": {
+                    "value": "Slide Deck Settings"
+                },
+                "key": "slideSettings",
+                "parameters": [
+                    {
+                        "identifier": "slide_settings_title",
+                        "name": {
+                            "value": "Slide deck title"
+                        },
+                        "description": {
+                            "value": "Specify the title or description of the slide deck."
+                        },
+                        "type": "string",
+                        "required": false,
+                        "multiple": false,
+                        "defaultValue": "",
+                        "hidden": false
+                    },
+                    {
+                        "identifier": "slide_settings_theme",
+                        "name": {
+                            "value": "Slide theme"
+                        },
+                        "description": {
+                            "value": "Specify the template to be used to render the slide. Available themes are 'digital', 'iadc', 'konviw', ..."
+                        },
+                        "type": "enum",
+                        "required": true,
+                        "multiple": false,
+                        "defaultValue": "digital",
+                        "values": [
+                            "digital",
+                            "iadc",
+                            "konviw"
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "identifier": "slide_settings_transition",
+                        "name": {
+                            "value": "Slide transition"
+                        },
+                        "description": {
+                            "value": "Specify the slide transition to use in the move between slides: slide (default), zoom, convex, fade, ..."
+                        },
+                        "type": "enum",
+                        "required": false,
+                        "multiple": false,
+                        "defaultValue": "slide",
+                        "values": [
+                            "none",
+                            "fade",
+                            "slide",
+                            "convex",
+                            "concave",
+                            "zoom"
+                        ],
+                        "hidden": false
+                    }
+                ]
+            },
+            {
                 "url": "/slide?macroId={macro.id}&pageId={page.id}&pageVersion={page.version}&slideId={slide_id}",
                 "description": {
                     "value": "Enter any rich text in the body of this macro so it will be rendered as a new slide."
                 },
                 "bodyType": "rich-text",
                 "name": {
-                    "value": "Slide"
+                    "value": "Slide Properties"
                 },
                 "key": "slide",
                 "parameters": [
@@ -47,59 +115,55 @@
                         "hidden": false
                     },
                     {
-                        "identifier": "slide_theme",
-                        "name": {
-                            "value": "Slide Theme"
-                        },
-                        "description": {
-                            "value": "Specify the template to be used to render the slide."
-                        },
-                        "type": "enum",
-                        "required": true,
-                        "multiple": false,
-                        "defaultValue": "digital",
-                        "values": [
-                            "digital",
-                            "iadc",
-                            "konviw"
-                        ],
-                        "hidden": false
-                    },
-                    {
                         "identifier": "slide_type",
                         "name": {
-                            "value": "Slide Type"
+                            "value": "Slide type"
                         },
                         "description": {
                             "value": "Specify the slide type to use from the values available in your style: cover, default, bubble, ..."
                         },
-                        "type": "string",
+                        "type": "enum",
                         "required": false,
                         "multiple": false,
-                        "defaultValue": "",
+                        "defaultValue": "cover",
+                        "values": [
+                            "cover",
+                            "default",
+                            "bubble",
+                            "blank",
+                            "new-section"
+                        ],
                         "hidden": false
                     },
                     {
                         "identifier": "slide_transition",
                         "name": {
-                            "value": "Slide Transition"
+                            "value": "Slide transition"
                         },
                         "description": {
                             "value": "Specify the slide transition to use in the move from this slide to the next one: slide (default), zoom, convex, fade, ..."
                         },
-                        "type": "string",
+                        "type": "enum",
                         "required": false,
                         "multiple": false,
-                        "defaultValue": "",
+                        "defaultValue": "slide",
+                        "values": [
+                            "none",
+                            "fade",
+                            "slide",
+                            "convex",
+                            "concave",
+                            "zoom"
+                        ],
                         "hidden": false
                     },
                     {
-                        "identifier": "slide_attachment",
+                        "identifier": "slide_background_attachment",
                         "name": {
-                            "value": "Slide Attachment"
+                            "value": "Background image or video"
                         },
                         "description": {
-                            "value": "Specify an attachment that will be used as background image or video for the slide."
+                            "value": "Specify the name of an attachment that will be used as background image or video."
                         },
                         "type": "attachment",
                         "required": false,
