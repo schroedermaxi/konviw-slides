@@ -4,15 +4,12 @@
     {
       "src": "app.js",
       "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["public/**","routes/**","views/**"]
-      }
     }
   ],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "app.js"
+      "destination": "/"
     }
   ]
 }
