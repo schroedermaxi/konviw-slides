@@ -6,6 +6,7 @@
       "use": "@vercel/node"
     }
   ],
+  "public": true,
   "outputDirectory": ".",
   "rewrites": [
     {
