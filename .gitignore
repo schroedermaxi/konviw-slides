@@ -8,3 +8,6 @@ credentials.json
 views/*.js
 views/*.js.map
 views/node
+.vscode
+.vercel
+.env

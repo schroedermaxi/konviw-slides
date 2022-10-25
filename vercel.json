@@ -2,12 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "app.js",
-      "use": "@vercel/node"
-    }
+       "src": "app.js",
+       "use": "@vercel/node"
+     }
   ],
-  "public": true,
-  "outputDirectory": ".",
   "rewrites": [
     {
       "source": "/(.*)",

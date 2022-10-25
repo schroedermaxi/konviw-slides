@@ -1,4 +1,6 @@
-{
+const fs = require('fs')
+
+const config = {
     "key": "slide",
     "name": "Slide",
     "description": "Slide Macro",
@@ -6,7 +8,7 @@
         "name": "Sanofi IADC",
         "url": "https://github.com/Sanofi-IADC"
     },
-    "baseUrl": "{{localBaseUrl}}",
+    "baseUrl": "",
     "authentication": {
         "type": "jwt"
     },
@@ -158,6 +160,24 @@
                         "hidden": false
                     },
                     {
+                        "identifier": "slide_paragraph_animation",
+                        "name": {
+                            "value": "Paragraph animation"
+                        },
+                        "description": {
+                            "value": "Do You want animated paragraph?"
+                        },
+                        "type": "enum",
+                        "required": false,
+                        "multiple": false,
+                        "defaultValue": "no",
+                        "values": [
+                            "no",
+                            "yes"
+                        ],
+                        "hidden": false
+                    },
+                    {
                         "identifier": "slide_background_attachment",
                         "name": {
                             "value": "Background image or video"
@@ -176,3 +196,9 @@
         ]
     }
 }
+
+config.baseUrl = process.env.APP_BASE_URL
+
+const writeStream = fs.createWriteStream('atlassian-connect.json')
+writeStream.write(JSON.stringify(config))
+writeStream.end()
