@@ -17,14 +17,6 @@ const handleResponseOfCustomMacro = (req, res, addon, { view, slideScope }) => {
       '/macro/id/' +
       macroId,
     function (err, response, contents) {
-      if (err || response.statusCode < 200 || response.statusCode > 299) {
-        console.log(err)
-        res.render(
-          '<strong>An error has occurred : ' +
-            response.statusCode +
-            '</strong>'
-        )
-      }
       contents = JSON.parse(contents)
 
       let responseData = {

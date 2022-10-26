@@ -28,7 +28,7 @@ const config = {
                 "description": {
                     "value": "The text included in the body of this macro will not be rendered in the Confluence page or in konviw."
                 },
-                "bodyType": "rich-text",
+                "bodyType": "none",
                 "name": {
                     "value": "Slide Deck Settings"
                 },
