@@ -1,6 +1,8 @@
 const fs = require('fs')
+const pkg = require('./package.json')
 
 const config = {
+    "version": pkg.version,
     "key": "slide",
     "name": "Slide",
     "description": "Slide Macro",
@@ -98,7 +100,7 @@ const config = {
                 },
                 "bodyType": "rich-text",
                 "name": {
-                    "value": "Slide Properties"
+                    "value": "Slide"
                 },
                 "key": "slide",
                 "parameters": [
