@@ -129,7 +129,7 @@ const config = {
                         "type": "enum",
                         "required": false,
                         "multiple": false,
-                        "defaultValue": "cover",
+                        "defaultValue": "default",
                         "values": [
                             "cover",
                             "default",
@@ -150,7 +150,7 @@ const config = {
                         "type": "enum",
                         "required": false,
                         "multiple": false,
-                        "defaultValue": "slide",
+                        "defaultValue": "none",
                         "values": [
                             "none",
                             "fade",
