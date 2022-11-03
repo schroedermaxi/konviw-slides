@@ -12,6 +12,7 @@ import * as sqlite3 from 'sqlite3';
 import * as pg from 'pg';
 import helmet from 'helmet';
 import nocache from 'nocache';
+import setcache from './middleware/setcache';
 import routes from './routes';
 import { addServerSideRendering } from './server-side-rendering';
 import aceConfig from './aceConfig';
@@ -53,7 +54,7 @@ app.use(addon.middleware());
 const staticDir = path.join(__dirname, 'public');
 app.use(express.static(staticDir));
 
-app.use(nocache());
+app.use(setcache());
 
 if (devEnv) app.use(errorHandler());
 
