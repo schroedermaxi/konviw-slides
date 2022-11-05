@@ -1,11 +1,6 @@
 {{!< layout}}
 
 <div data-parameters-object="{{{parameters_object}}}" data-parameters-string="{{{parameters_string}}}" data-parameters-object2="{{parameters_object}}" data-parameters-string2="{{parameters_string}}">
-  {{#if body}}
-    <button onclick="showParams()">Show config</button>
-    {{{body}}}
-  {{/if}}
-  <div id="params"></div>
 </div>
 
 <input type="hidden" id="slideParams" name="slideParams" value="{{{parameters_object}}}">
@@ -14,8 +9,5 @@
 <input type="hidden" id="slideParams4" name="slideParams4" value="{{parameters_string}}">
 
 <script type="text/javascript">
-  const parameters = "{{{parameters_string}}}";
-  function showParams() {
-    document.getElementById("params").innerHTML = parameters;
-  }
+    const parameters = "{{{parameters_string}}}";
 </script>
