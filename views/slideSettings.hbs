@@ -3,11 +3,17 @@
 <div data-parameters-object="{{{parameters_object}}}" data-parameters-string="{{{parameters_string}}}" data-parameters-object2="{{parameters_object}}" data-parameters-string2="{{parameters_string}}">
 </div>
 
+<button onclick="showParams2()">Show config</button>
+<div id="params2"></div>
+
 <input type="hidden" id="slideParams" name="slideParams" value="{{{parameters_object}}}">
 <input type="hidden" id="slideParams2" name="slideParams2" value="{{parameters_object}}">
 <input type="hidden" id="slideParams3" name="slideParams3" value="{{{parameters_string}}}">
 <input type="hidden" id="slideParams4" name="slideParams4" value="{{parameters_string}}">
 
 <script type="text/javascript">
-    const parameters = "{{{parameters_string}}}";
+    const parameters2 = "{{{parameters_string}}}";
+    function showParams2() {
+      document.getElementById("params2").innerHTML = parameters2;
+    }
 </script>
