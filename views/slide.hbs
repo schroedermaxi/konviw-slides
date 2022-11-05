@@ -1,9 +1,9 @@
 {{!< layout}}
 
 <div data-parameters-object="{{{parameters_object}}}" data-parameters-string="{{{parameters_string}}}" data-parameters-object2="{{parameters_object}}" data-parameters-string2="{{parameters_string}}">
-    {{#if body}}
-        {{{body}}}
-    {{/if}}
+  {{#if body}}
+    {{{body}}}
+  {{/if}}
 </div>
 
 <input type="hidden" id="slideParams" name="slideParams" value="{{{parameters_object}}}">
@@ -12,5 +12,5 @@
 <input type="hidden" id="slideParams4" name="slideParams4" value="{{parameters_string}}">
 
 <script type="text/javascript">
-    const parameters = "{{{parameters_string}}}";
+  const parameters = "{{{parameters_string}}}";
 </script>
