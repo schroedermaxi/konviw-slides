@@ -16,7 +16,13 @@ const aceConfig = {
             store: {
                 adapter: 'sequelize',
                 dialect: 'postgres',
-                url: process.env.DATABASE_URL
+                url: process.env.DATABASE_URL,
+                pool: {
+                    max: 18,
+                    min: 0,
+                    acquire: 30000,
+                    idle: 10000
+                }
             },
             errorTemplate: true,
             localBaseUrl: process.env.APP_BASE_URL,
