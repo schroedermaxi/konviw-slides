@@ -18,7 +18,7 @@ const aceConfig = {
                 dialect: 'postgres',
                 url: process.env.DATABASE_URL,
                 pool: {
-                    max: 18,
+                    max: 1,
                     min: 0,
                     acquire: 30000,
                     idle: 10000
