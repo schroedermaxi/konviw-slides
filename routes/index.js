@@ -35,15 +35,15 @@ const handleResponseOfCustomMacro = (req, res, addon, { view, slideScope }) => {
 }
 
 export default function routes(app, addon) {
-  app.get('/', (req, res) => {
+  app.get('/', (_, res) => {
     res.send(require('../atlassian-connect.json'))
   })
 
-  app.get('/slide', addon.authenticate(),function (req, res) {
+  app.get('/slide', addon.authenticate(), (req, res) => {
     handleResponseOfCustomMacro(req, res, addon, { view: 'slide', slideScope: true })
   })
 
-  app.get('/slideSettings', addon.authenticate(), function (req, res) {
+  app.get('/slideSettings', addon.authenticate(), (req, res) => {
     handleResponseOfCustomMacro(req, res, addon, { view: 'slideSettings', slideScope: false })
   })
 }
