@@ -9,90 +9,70 @@ export default class VercelAdapter {
   }
 
   async get(key, clientKey) {
-    try {
-      const response = await fetch(
-        `${this.options.EDGE_CONFIG_API_URL}/${this.options.EDGE_CONFIG_ID}/item/${vercelKey(key, clientKey)}?token=${this.options.EDGE_CONFIG_TOKEN}`,
-      );
-      return await response.json();
-    } catch (error) {
-      this.logger.error(`Get: ${error}`);
-    }
+    const response = await fetch(
+      `${this.options.EDGE_CONFIG_API_URL}/${this.options.EDGE_CONFIG_ID}/item/${vercelKey(key, clientKey)}?token=${this.options.EDGE_CONFIG_TOKEN}`,
+    );
+    return response.json();
   }
 
   async set(key, value, clientKey) {
-    try {
-      const updateEdgeConfig = await fetch(
-        `${this.options.EDGE_CONFIG_VERCEL_API_URL}/${this.options.EDGE_CONFIG_ID}/items?teamId=${this.options.EDGE_CONFIG_VERCEL_TEAM_ID}`,
-        {
-          method: 'PATCH',
-          headers: {
-            Authorization: `Bearer ${this.options.EDGE_CONFIG_VERCEL_API_TOKEN}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            items: [
-              {
-                operation: 'create',
-                key: vercelKey(key, clientKey),
-                value,
-              },
-            ],
-          }),
+    fetch(
+      `${this.options.EDGE_CONFIG_VERCEL_API_URL}/${this.options.EDGE_CONFIG_ID}/items?teamId=${this.options.EDGE_CONFIG_VERCEL_TEAM_ID}`,
+      {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${this.options.EDGE_CONFIG_VERCEL_API_TOKEN}`,
+          'Content-Type': 'application/json',
         },
-      );
-      const result = await updateEdgeConfig.json();
-      this.logger.info(result);
-    } catch (error) {
-      this.logger.error(`Set: ${error}`);
-    }
+        body: JSON.stringify({
+          items: [
+            {
+              operation: 'create',
+              key: vercelKey(key, clientKey),
+              value,
+            },
+          ],
+        }),
+      },
+    );
   }
 
   async del(key, clientKey) {
-    try {
-      const updateEdgeConfig = await fetch(
-        `${this.options.EDGE_CONFIG_VERCEL_API_URL}/${this.options.EDGE_CONFIG_ID}/items?teamId=${this.options.EDGE_CONFIG_VERCEL_TEAM_ID}`,
-        {
-          method: 'PATCH',
-          headers: {
-            Authorization: `Bearer ${this.options.EDGE_CONFIG_VERCEL_API_TOKEN}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            items: [
-              {
-                operation: 'delete',
-                key: vercelKey(key, clientKey),
-                value: null,
-              },
-            ],
-          }),
+    fetch(
+      `${this.options.EDGE_CONFIG_VERCEL_API_URL}/${this.options.EDGE_CONFIG_ID}/items?teamId=${this.options.EDGE_CONFIG_VERCEL_TEAM_ID}`,
+      {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${this.options.EDGE_CONFIG_VERCEL_API_TOKEN}`,
+          'Content-Type': 'application/json',
         },
-      );
-      const result = await updateEdgeConfig.json();
-      this.logger.info(result);
-    } catch (error) {
-      this.logger.error(`Del: ${error}`);
-    }
+        body: JSON.stringify({
+          items: [
+            {
+              operation: 'delete',
+              key: vercelKey(key, clientKey),
+              value: null,
+            },
+          ],
+        }),
+      },
+    );
   }
 
   async getAllClientInfos() {
-    try {
-      const readItems = await fetch(
-        `${this.options.EDGE_CONFIG_VERCEL_API_URL}/${this.options.EDGE_CONFIG_ID}/items?teamId=${this.options.EDGE_CONFIG_VERCEL_TEAM_ID}`,
-        {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${this.options.EDGE_CONFIG_VERCEL_API_TOKEN}`,
-          },
+    const readItems = await fetch(
+      `${this.options.EDGE_CONFIG_VERCEL_API_URL}/${this.options.EDGE_CONFIG_ID}/items?teamId=${this.options.EDGE_CONFIG_VERCEL_TEAM_ID}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${this.options.EDGE_CONFIG_VERCEL_API_TOKEN}`,
         },
-      );
-      const result = await readItems.json();
-      return Promise.all(
-        result.map(key => this.get(key))
-      );
-    } catch (error) {
-      this.logger.error(error);
-    }
+      },
+    );
+    const result = await readItems.json();
+    return Promise.all(
+      result.map(key => this.get(key))
+    );
   }
 
   isMemoryStore() {
