@@ -20,7 +20,9 @@ RUN npm config set  -g @sanofi:registry=https://sanofi.jfrog.io/sanofi/api/npm/n
 
 COPY . .
 
-RUN apk update && apk add python3 python3-dev py3-pip build-base libffi-dev openssl-dev libgcc curl
+RUN apk --no-cache add git curl && apk add --no-cache --upgrade bash
+
+RUN npm install -g node-gyp 
 
 # RUN curl  -u "${ARTIFACTORY_REGISTRY_USERNAME}:${ARTIFACTORY_REGISTRY_PASSWORD}" "${ARTIFACTORY_NPM_REGISTRY_AUTHURL}" >> /app/.npmrc
 RUN npm ci
