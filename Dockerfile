@@ -33,6 +33,7 @@ RUN npm run vercel-build
 
 # Expose port 8080, which is what the node process is listening to
 EXPOSE 8080
+RUN chmod -R 777 ~/.npm
 
 # Set the startup command to 'npm start'
 CMD [ "npm", "start"] 
