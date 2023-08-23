@@ -22,6 +22,8 @@ COPY . .
 
 RUN apk --no-cache add git curl py3-pip g++ make && apk add --no-cache --upgrade bash
 
+RUN sudo chown -R 1001110000:0 "/.npm"
+
 RUN npm install -g node-gyp 
 
 # RUN curl  -u "${ARTIFACTORY_REGISTRY_USERNAME}:${ARTIFACTORY_REGISTRY_PASSWORD}" "${ARTIFACTORY_NPM_REGISTRY_AUTHURL}" >> /app/.npmrc
