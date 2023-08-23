@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:16.13-alpine
 
 WORKDIR /app
 # RUN cp -v /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem /etc/ssl/certs/ca-certificates.crt
@@ -22,7 +22,6 @@ COPY . .
 
 RUN apk --no-cache add git curl py3-pip g++ make && apk add --no-cache --upgrade bash
 
-RUN chmod -R 777 ~/.npm
 
 RUN npm install -g node-gyp 
 
@@ -33,7 +32,7 @@ RUN npm run vercel-build
 
 # Expose port 8080, which is what the node process is listening to
 EXPOSE 8080
-RUN chmod -R 777 ~/.npm
+# RUN chmod -R 777 ~/.npm
 
 # Set the startup command to 'npm start'
 CMD [ "npm", "start"] 
