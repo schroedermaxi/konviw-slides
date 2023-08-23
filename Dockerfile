@@ -14,6 +14,11 @@ ENV NO_PROXY cloud.local,sanofi.com,docker
 # ENV no_proxy=${NO_PROXY}
 
 ENV APP_BASE_URL=/
+ENV POSTGRES_URL=${POSTGRES_URL}
+ENV POSTGRES_PORT=${POSTGRES_PORT}
+ENV POSTGRES_DB=${POSTGRES_DB}
+ENV POSTGRES_USERNAME=${POSTGRES_USERNAME}
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
 # RUN npm config set proxy http://emea-aws-webproxy.service.cloud.local:3128
 # RUN npm config set  -g @sanofi:registry=https://sanofi.jfrog.io/sanofi/api/npm/npm-iadc-local/
